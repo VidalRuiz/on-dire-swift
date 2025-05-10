@@ -40,4 +40,7 @@ enum AppStrings {
     static let termsAcceptance = NSLocalizedString("terms_acceptance", comment: "")
     static let registerAction = NSLocalizedString("register_action", comment: "")
     static let alreadyHaveAccount = NSLocalizedString("already_have_account", comment: "")
+    
+    static let appStatus = NSLocalizedString("app_status", comment: "")
+    static let offlineStatus = NSLocalizedString("offline_status", comment: "")
 }

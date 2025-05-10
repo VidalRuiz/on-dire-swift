@@ -2,6 +2,7 @@ import SwiftUI
 
 struct WelcomeView: View {
     @State private var goToRoleSelection = false
+    @StateObject private var viewModel = WelcomeViewModel()
 
     var body: some View {
         NavigationStack {
@@ -27,9 +28,23 @@ struct WelcomeView: View {
                         .multilineTextAlignment(.center)
                         .padding(.horizontal)
 
-                    PrimaryButton(title: AppStrings.startButton) {
-                        goToRoleSelection = true
+                    Text(viewModel.apiStatusText)
+                        .font(.footnote)
+                        .foregroundColor(AppColors.secondaryText)
+
+                    if viewModel.isLoading {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .tint(AppColors.accent)
                     }
+
+                    Group {
+                        PrimaryButton(title: AppStrings.startButton) {
+                            goToRoleSelection = true
+                        }
+                        .disabled(!viewModel.isApiAvailable)
+                    }
+                    .opacity(viewModel.isApiAvailable ? 1.0 : 0.4)
                 }
                 .padding()
             }
@@ -37,6 +52,9 @@ struct WelcomeView: View {
                 UserRoleSelectionView()
             }
             .navigationBarHidden(true)
+            .task {
+                viewModel.fetchApiStatus()
+            }
         }
     }
 }

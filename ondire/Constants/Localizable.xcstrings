@@ -476,6 +476,40 @@
           }
         }
       }
+    },
+    "app_status" : {
+      "comment" : "Texto para mostrar el estado actual de la API",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Status: %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado de la app: %@"
+          }
+        }
+      }
+    },
+    "offline_status" : {
+      "comment" : "Texto para indicar que la app está sin conexión",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offline"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin conexión"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
