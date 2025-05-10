@@ -34,15 +34,15 @@ struct WelcomeView: View {
                             .foregroundColor(.white)
                             .padding()
                             .frame(maxWidth: .infinity)
-                            .background(Color("PrimaryColor"))
+                            .background(Color("OndirePrimaryColor"))
                             .cornerRadius(10)
                     }
                     .padding(.horizontal)
-
-                    NavigationLink("", destination: UserRoleSelectionView(), isActive: $goToRoleSelection)
-                        .hidden()
                 }
                 .padding()
+            }
+            .navigationDestination(isPresented: $goToRoleSelection) {
+                UserRoleSelectionView()
             }
             .navigationBarHidden(true)
         }

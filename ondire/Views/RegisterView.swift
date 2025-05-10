@@ -40,7 +40,7 @@ struct RegisterView: View {
                         .foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color("PrimaryColor"))
+                        .background(Color("OndirePrimaryColor"))
                         .cornerRadius(10)
                 }
                 .navigationDestination(isPresented: $goToHome) {
