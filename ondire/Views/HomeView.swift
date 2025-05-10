@@ -32,17 +32,6 @@ struct HomeView: View {
                         .frame(width: 100, height: 100)
                         .foregroundColor(Color("AccentColor"))
 
-                    Button(action: {
-                        // Acción futura: ir al dashboard
-                    }) {
-                        Text("Empezar")
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color("OndirePrimaryColor"))
-                            .cornerRadius(10)
-                    }
-                    .padding(.horizontal)
 
                     Spacer()
                 }

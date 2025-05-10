@@ -6,7 +6,7 @@ struct WelcomeView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color("BackgroundColor")
+                Color(AppColors.background)
                     .ignoresSafeArea()
 
                 VStack(spacing: 30) {
@@ -14,30 +14,22 @@ struct WelcomeView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100, height: 100)
-                        .foregroundColor(Color("AccentColor"))
+                        .foregroundColor(AppColors.accent)
 
-                    Text("Bienvenido a Ondire")
+                    Text(AppStrings.welcomeTitle)
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                        .foregroundColor(Color("PrimaryText"))
+                        .foregroundColor(AppColors.primaryText)
 
-                    Text("La app que cuida de quienes cuidan")
+                    Text(AppStrings.welcomeSubtitle)
                         .font(.headline)
-                        .foregroundColor(Color("SecondaryText"))
+                        .foregroundColor(AppColors.secondaryText)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal)
 
-                    Button(action: {
+                    PrimaryButton(title: AppStrings.startButton) {
                         goToRoleSelection = true
-                    }) {
-                        Text("Comenzar")
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color("OndirePrimaryColor"))
-                            .cornerRadius(10)
                     }
-                    .padding(.horizontal)
                 }
                 .padding()
             }

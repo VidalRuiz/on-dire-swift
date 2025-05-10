@@ -7,51 +7,43 @@ struct RegisterView: View {
     @State private var acceptedTerms = true
     @State private var goToHome = false
     @State private var goToLogin = false
-    
+
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                Text("Crear una cuenta")
+                Text(AppStrings.registerTitle)
                     .font(.title)
                     .fontWeight(.bold)
-                    .foregroundColor(Color("PrimaryText"))
+                    .foregroundColor(AppColors.primaryText)
                     .padding(.top)
-                
-                socialButton(label: "Continuar con Apple", icon: "applelogo")
-                socialButton(label: "Continuar con Google", icon: "globe")
-                
-                
-                Divider().overlay(Text("o").foregroundColor(.gray))
 
-                formField(title: "Nombre completo", text: $fullName)
-                formField(title: "Correo electrónico", text: $email, keyboard: .emailAddress)
-                formField(title: "Contraseña", text: $password, isSecure: true)
+                socialButton(label: AppStrings.registerWithApple, icon: "applelogo")
+                socialButton(label: AppStrings.registerWithGoogle, icon: "globe")
+
+                Divider().overlay(Text(AppStrings.dividerOr).foregroundColor(AppColors.secondaryText))
+
+                formField(title: AppStrings.fullNameField, text: $fullName)
+                formField(title: AppStrings.emailField, text: $email, keyboard: .emailAddress)
+                formField(title: AppStrings.passwordField, text: $password, isSecure: true)
 
                 Toggle(isOn: $acceptedTerms) {
-                    Text("Acepto los términos y condiciones")
+                    Text(AppStrings.termsAcceptance)
                         .font(.footnote)
-                        .foregroundColor(Color("SecondaryText"))
+                        .foregroundColor(AppColors.secondaryText)
                 }
 
-                Button(action: {
+                PrimaryButton(title: AppStrings.registerAction) {
                     goToHome = true
-                }) {
-                    Text("Crear cuenta")
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color("OndirePrimaryColor"))
-                        .cornerRadius(10)
                 }
                 .navigationDestination(isPresented: $goToHome) {
                     HomeView()
                 }
 
-                Button("¿Ya tienes cuenta? Iniciar sesión") {
-                    goToLogin=true;
+                Button(AppStrings.alreadyHaveAccount) {
+                    goToLogin = true
                 }
                 .font(.footnote)
-                .foregroundColor(Color("SecondaryText"))
+                .foregroundColor(AppColors.secondaryText)
                 .padding(.top, 10)
                 .navigationDestination(isPresented: $goToLogin) {
                     LoginView()
@@ -59,7 +51,7 @@ struct RegisterView: View {
             }
             .padding()
         }
-        .background(Color("BackgroundColor").ignoresSafeArea())
+        .background(AppColors.background.ignoresSafeArea())
     }
 
     @ViewBuilder
@@ -86,7 +78,8 @@ struct RegisterView: View {
         VStack(alignment: .leading, spacing: 4) {
             Text(title)
                 .font(.subheadline)
-                .foregroundColor(Color("PrimaryText"))
+                .foregroundColor(AppColors.primaryText)
+
             if isSecure {
                 SecureField(title, text: text)
                     .textContentType(.password)

@@ -7,21 +7,21 @@ struct UserRoleSelectionView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color("BackgroundColor").ignoresSafeArea()
-
+                //Color("BackgroundColor").ignoresSafeArea()
+                AppColors.background.ignoresSafeArea(edges: .all)
                 VStack(spacing: 30) {
-                    Text("¿Qué deseas hacer en Ondire?")
+                    Text(AppStrings.roleSelectionTitle)
                         .font(.title2)
                         .fontWeight(.semibold)
-                        .foregroundColor(Color("PrimaryText"))
+                        .foregroundColor(AppColors.primaryText)
                         .multilineTextAlignment(.center)
                         .padding(.top, 40)
 
                     VStack(spacing: 20) {
                         roleCard(
                             imageName: "OfrecerClases",
-                            title: "Ofrecer servicios",
-                            description: "Publica tus clases, terapias o consultas",
+                            title: AppStrings.roleProviderTitle,
+                            description: AppStrings.roleProviderDescription,
                             action: {
                                 navigateToRegister = true
                             }
@@ -29,8 +29,8 @@ struct UserRoleSelectionView: View {
 
                         roleCard(
                             imageName: "TomarClases",
-                            title: "Tomar clases o contratar",
-                            description: "Explora y agenda sesiones fácilmente",
+                            title: AppStrings.roleClientTitle,
+                            description: AppStrings.roleClientDescription,
                             action: {
                                 navigateToRegister = true
                             }
@@ -38,22 +38,16 @@ struct UserRoleSelectionView: View {
                     }
                     .padding(.horizontal)
 
-                    Button(action: {
+                    Spacer() // 👇 Empuja el botón hacia abajo
+                    
+                    
+                    PrimaryButton(title: AppStrings.loginButton) {
                         goToLogin = true
-                    })
-                    {
-                        Text("Ya tengo cuenta")
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color("OndirePrimaryColor"))
-                            .cornerRadius(10)
                     }
+                    .padding(.bottom, 20)
                     .navigationDestination(isPresented: $goToLogin) {
                         LoginView()
                     }
-                    .padding(.horizontal)
-                    Spacer()
                 }
             }
             .navigationDestination(isPresented: $navigateToRegister) {

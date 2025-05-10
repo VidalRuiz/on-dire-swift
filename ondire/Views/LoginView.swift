@@ -14,52 +14,45 @@ struct LoginView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("Iniciar sesión")
+            Text(AppStrings.loginTitle)
                 .font(.title)
                 .fontWeight(.bold)
-                .foregroundColor(Color("PrimaryText"))
+                .foregroundColor(AppColors.primaryText)
                 .padding(.top)
 
-            formField(title: "Correo electrónico", text: $email, keyboard: .emailAddress)
-            formField(title: "Contraseña", text: $password, isSecure: true)
+            formField(title: AppStrings.emailField, text: $email, keyboard: .emailAddress)
+            formField(title: AppStrings.passwordField, text: $password, isSecure: true)
 
-            Button("¿Olvidaste tu contraseña?") {
+            Button(AppStrings.forgotPassword) {
                 // Acción para recuperación de contraseña
             }
             .font(.footnote)
-            .foregroundColor(Color("SecondaryText"))
+            .foregroundColor(AppColors.secondaryText)
             .frame(maxWidth: .infinity, alignment: .trailing)
 
-            Button(action: {
+            PrimaryButton(title: AppStrings.loginAction) {
                 goToHome = true
-            }) {
-                Text("Iniciar sesión")
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color("OndirePrimaryColor"))
-                    .cornerRadius(10)
             }
             .navigationDestination(isPresented: $goToHome) {
                 HomeView()
             }
 
-            Divider().overlay(Text("o").foregroundColor(.gray))
+            Divider().overlay(Text(AppStrings.loginOr).foregroundColor(AppColors.secondaryText))
 
-            socialButton(label: "Continuar con Google", icon: "globe")
-            socialButton(label: "Continuar con Apple", icon: "applelogo")
+            socialButton(label: AppStrings.loginWithGoogle, icon: "globe")
+            socialButton(label: AppStrings.loginWithApple, icon: "applelogo")
 
-            Button("¿No tienes cuenta? Crear una") {
+            Button(AppStrings.noAccount) {
                 // Acción para ir a RegisterView
             }
             .font(.footnote)
-            .foregroundColor(Color("SecondaryText"))
+            .foregroundColor(AppColors.secondaryText)
             .padding(.top, 10)
 
             Spacer()
         }
         .padding()
-        .background(Color("BackgroundColor").ignoresSafeArea())
+        .background(AppColors.background.ignoresSafeArea())
     }
 
     @ViewBuilder
@@ -67,7 +60,7 @@ struct LoginView: View {
         VStack(alignment: .leading, spacing: 4) {
             Text(title)
                 .font(.subheadline)
-                .foregroundColor(Color("PrimaryText"))
+                .foregroundColor(AppColors.primaryText)
 
             if isSecure {
                 SecureField(title, text: text)
@@ -99,7 +92,7 @@ struct LoginView: View {
             .frame(maxWidth: .infinity)
             .padding()
             .background(Color.white)
-            .foregroundColor(Color("PrimaryText"))
+            .foregroundColor(AppColors.primaryText)
             .cornerRadius(10)
             .shadow(color: .black.opacity(0.05), radius: 4, x: 0, y: 2)
         }
