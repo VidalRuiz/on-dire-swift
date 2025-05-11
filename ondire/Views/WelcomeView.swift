@@ -15,6 +15,9 @@ struct WelcomeView: View {
                     Image("LogoTexto")
                         .resizable()
                         .scaledToFit()
+                        .cornerRadius(20)
+                        .cornerRadius(20)
+                        .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 5)
                         
                     
                    /* Image(systemName: "leaf.circle.fill")

@@ -72,6 +72,7 @@ struct RegisterView: View {
                     )
                 }
                 .disabled(viewModel.isLoading || fullName.isEmpty || email.isEmpty || password.isEmpty)
+                .opacity((!viewModel.isLoading && !fullName.isEmpty && !email.isEmpty && !password.isEmpty) ? 1.0 : 0.4)
 
                 if viewModel.isLoading {
                     ProgressView(AppStrings.loadingCreatingAccount)

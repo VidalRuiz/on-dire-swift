@@ -25,7 +25,7 @@ struct ondireApp: App {
 
     var body: some Scene {
         WindowGroup {
-            WelcomeView()
+            SplashView()
         }
         .modelContainer(sharedModelContainer)
     }
