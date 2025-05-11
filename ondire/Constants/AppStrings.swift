@@ -41,6 +41,21 @@ enum AppStrings {
     static let registerAction = NSLocalizedString("register_action", comment: "")
     static let alreadyHaveAccount = NSLocalizedString("already_have_account", comment: "")
     
+    static let accountCreatedTitle = NSLocalizedString("register.success.title", comment: "")
+    static let accountCreatedMessage = NSLocalizedString("register.success.message", comment: "")
+    static let goToLoginButton = NSLocalizedString("register.success.goToLogin", comment: "")
+    
+    // Register Validation Errors
+    static let errorEmptyFullName = NSLocalizedString("register.error.emptyFullName", comment: "")
+    static let errorEmptyEmail = NSLocalizedString("register.error.emptyEmail", comment: "")
+    static let errorInvalidEmail = NSLocalizedString("register.error.invalidEmail", comment: "")
+    static let errorWeakPassword = NSLocalizedString("register.error.weakPassword", comment: "")
+    static let errorTermsNotAccepted = NSLocalizedString("register.error.termsNotAccepted", comment: "")
+    
     static let appStatus = NSLocalizedString("app_status", comment: "")
     static let offlineStatus = NSLocalizedString("offline_status", comment: "")
+
+    static let loadingCreatingAccount = NSLocalizedString("loading_creating_account", comment: "")
+    
+    
 }

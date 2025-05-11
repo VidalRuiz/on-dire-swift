@@ -12,5 +12,6 @@ enum ApiConstants {
     enum Endpoint {
         static let healthStatus = "/api/health"
         // Puedes agregar más: login, register, etc.
+        static let registerUser = "/api/access/users/register"
     }
 }

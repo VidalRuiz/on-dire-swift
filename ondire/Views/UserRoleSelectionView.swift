@@ -53,8 +53,9 @@ struct UserRoleSelectionView: View {
             .navigationDestination(isPresented: $navigateToRegister) {
                 RegisterView()
             }
-            .navigationBarHidden(true)
+            .navigationBarHidden(false)
         }
+        .navigationBarBackButtonHidden(false)
     }
 
     @ViewBuilder

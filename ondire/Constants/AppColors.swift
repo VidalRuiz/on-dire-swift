@@ -14,4 +14,5 @@ enum AppColors {
     static let secondaryText = Color("SecondaryText")
     static let ondirePrimary = Color("OndirePrimaryColor")
     static let ondireWhite = Color("OndireWhite")
+    static let error = Color("ErrorColor")
 }

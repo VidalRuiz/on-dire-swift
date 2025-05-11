@@ -11,11 +11,17 @@ struct WelcomeView: View {
                     .ignoresSafeArea()
 
                 VStack(spacing: 30) {
-                    Image(systemName: "leaf.circle.fill")
+                    
+                    Image("LogoTexto")
+                        .resizable()
+                        .scaledToFit()
+                        
+                    
+                   /* Image(systemName: "leaf.circle.fill")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100, height: 100)
-                        .foregroundColor(AppColors.accent)
+                        .foregroundColor(AppColors.accent)*/
 
                     Text(AppStrings.welcomeTitle)
                         .font(.largeTitle)
@@ -38,6 +44,8 @@ struct WelcomeView: View {
                             .tint(AppColors.accent)
                     }
 
+                    Spacer() // 👇 Empuja el botón hacia abajo
+                    
                     Group {
                         PrimaryButton(title: AppStrings.startButton) {
                             goToRoleSelection = true
@@ -45,6 +53,7 @@ struct WelcomeView: View {
                         .disabled(!viewModel.isApiAvailable)
                     }
                     .opacity(viewModel.isApiAvailable ? 1.0 : 0.4)
+                    .padding(.bottom, 20)
                 }
                 .padding()
             }

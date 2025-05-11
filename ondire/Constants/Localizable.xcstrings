@@ -18,6 +18,23 @@
         }
       }
     },
+    "app_status" : {
+      "comment" : "Texto para mostrar el estado actual de la API",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Status: %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado de la app: %@"
+          }
+        }
+      }
+    },
     "Aquí podrás gestionar tus clases, citas o encontrar profesionales de bienestar." : {
 
     },
@@ -128,6 +145,9 @@
         }
       }
     },
+    "loading_creating_account" : {
+
+    },
     "login_action" : {
       "comment" : "Botón para iniciar sesión",
       "localizations" : {
@@ -231,6 +251,23 @@
         }
       }
     },
+    "offline_status" : {
+      "comment" : "Texto para indicar que la app está sin conexión",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offline"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin conexión"
+          }
+        }
+      }
+    },
     "password_field" : {
       "comment" : "Campo de contraseña",
       "localizations" : {
@@ -312,6 +349,160 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Crear una cuenta"
+          }
+        }
+      }
+    },
+    "register.error.emptyEmail" : {
+      "comment" : "Error cuando el correo está vacío",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email is required."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El correo electrónico es obligatorio."
+          }
+        }
+      }
+    },
+    "register.error.emptyFullName" : {
+      "comment" : "Error cuando el nombre está vacío",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full name is required."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El nombre completo es obligatorio."
+          }
+        }
+      }
+    },
+    "register.error.invalidEmail" : {
+      "comment" : "Error cuando el correo no tiene formato válido",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The email address is not valid."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El correo electrónico no tiene un formato válido."
+          }
+        }
+      }
+    },
+    "register.error.termsNotAccepted" : {
+      "comment" : "Error cuando no se aceptan los términos",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You must accept the terms and conditions."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Debes aceptar los términos y condiciones."
+          }
+        }
+      }
+    },
+    "register.error.weakPassword" : {
+      "comment" : "Error cuando la contraseña es muy corta",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password must be at least 6 characters."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La contraseña debe tener al menos 6 caracteres."
+          }
+        }
+      }
+    },
+    "register.loading.creatingAccount" : {
+      "comment" : "Texto que indica que la cuenta se está creando",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Creating account..."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Creando cuenta..."
+          }
+        }
+      }
+    },
+    "register.success.goToLogin" : {
+      "comment" : "Texto del botón para ir a login tras crear cuenta",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go to Login"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ir a Iniciar sesión"
+          }
+        }
+      }
+    },
+    "register.success.message" : {
+      "comment" : "Mensaje de alerta cuando el registro fue exitoso",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can now log in with your new account."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahora puedes iniciar sesión con tu nueva cuenta."
+          }
+        }
+      }
+    },
+    "register.success.title" : {
+      "comment" : "Título de alerta cuando el registro fue exitoso",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account created"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuenta creada"
           }
         }
       }
@@ -473,40 +664,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bienvenido a Ondire"
-          }
-        }
-      }
-    },
-    "app_status" : {
-      "comment" : "Texto para mostrar el estado actual de la API",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "App Status: %@"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Estado de la app: %@"
-          }
-        }
-      }
-    },
-    "offline_status" : {
-      "comment" : "Texto para indicar que la app está sin conexión",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Offline"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sin conexión"
           }
         }
       }

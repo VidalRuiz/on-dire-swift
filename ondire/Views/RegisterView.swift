@@ -1,12 +1,17 @@
 import SwiftUI
 
 struct RegisterView: View {
+    @StateObject private var viewModel = RegisterViewModel()
     @State private var fullName = ""
     @State private var email = ""
     @State private var password = ""
     @State private var acceptedTerms = true
-    @State private var goToHome = false
     @State private var goToLogin = false
+    @FocusState private var focusedField: Field?
+
+    enum Field {
+        case fullName, email, password
+    }
 
     var body: some View {
         ScrollView {
@@ -21,10 +26,35 @@ struct RegisterView: View {
                 socialButton(label: AppStrings.registerWithGoogle, icon: "globe")
 
                 Divider().overlay(Text(AppStrings.dividerOr).foregroundColor(AppColors.secondaryText))
+                
+                if let errorMessage = viewModel.errorMessage {
+                    Text(errorMessage)
+                        .foregroundColor(AppColors.error)
+                        .font(.footnote)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal)
+                }
 
                 formField(title: AppStrings.fullNameField, text: $fullName)
+                    .focused($focusedField, equals: .fullName)
+                    .submitLabel(.next)
+                    .onSubmit { focusedField = .email }
                 formField(title: AppStrings.emailField, text: $email, keyboard: .emailAddress)
+                    .focused($focusedField, equals: .email)
+                    .submitLabel(.next)
+                    .onSubmit { focusedField = .password }
                 formField(title: AppStrings.passwordField, text: $password, isSecure: true)
+                    .focused($focusedField, equals: .password)
+                    .submitLabel(.done)
+                    .onSubmit {
+                        focusedField = nil
+                        viewModel.register(
+                            fullName: fullName,
+                            email: email,
+                            password: password,
+                            termsAccepted: acceptedTerms
+                        )
+                    }
 
                 Toggle(isOn: $acceptedTerms) {
                     Text(AppStrings.termsAcceptance)
@@ -33,11 +63,21 @@ struct RegisterView: View {
                 }
 
                 PrimaryButton(title: AppStrings.registerAction) {
-                    goToHome = true
+                    focusedField = nil
+                    viewModel.register(
+                        fullName: fullName,
+                        email: email,
+                        password: password,
+                        termsAccepted: acceptedTerms
+                    )
                 }
-                .navigationDestination(isPresented: $goToHome) {
-                    HomeView()
+                .disabled(viewModel.isLoading || fullName.isEmpty || email.isEmpty || password.isEmpty)
+
+                if viewModel.isLoading {
+                    ProgressView(AppStrings.loadingCreatingAccount)
+                        .foregroundColor(AppColors.primaryText)
                 }
+
 
                 Button(AppStrings.alreadyHaveAccount) {
                     goToLogin = true
@@ -52,6 +92,17 @@ struct RegisterView: View {
             .padding()
         }
         .background(AppColors.background.ignoresSafeArea())
+        .alert(AppStrings.accountCreatedTitle, isPresented: Binding(
+            get: { viewModel.accountCreated },
+            set: { viewModel.accountCreated = $0 }
+        )) {
+            Button(AppStrings.goToLoginButton) {
+                goToLogin = true
+            }
+        } message: {
+            Text(viewModel.successMessage ?? AppStrings.accountCreatedMessage)
+        }
+
     }
 
     @ViewBuilder
