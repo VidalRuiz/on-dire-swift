@@ -25,7 +25,7 @@ class ApiService {
         }
 
         guard let url = URL(string: ApiConstants.baseURL + ApiConstants.Endpoint.healthStatus) else {
-            completion(.failure(ApiError.invalidURL))
+            completion(.failure(ApiError.invalidUrl))
             return
         }
 

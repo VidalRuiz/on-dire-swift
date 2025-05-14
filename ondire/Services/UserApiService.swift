@@ -20,9 +20,60 @@ class UserApiService {
             completion(.failure(ApiError.noInternet))
             return
         }
-
+        
         guard let url = URL(string: ApiConstants.baseURL + ApiConstants.Endpoint.registerUser) else {
-            completion(.failure(ApiError.invalidURL))
+            completion(.failure(ApiError.invalidUrl))
+            return
+        }
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let languageCode = Locale.preferredLanguages.first ?? "es"
+        urlRequest.addValue(languageCode, forHTTPHeaderField: "Accept-Language")
+        
+        do {
+            urlRequest.httpBody = try JSONEncoder().encode(request)
+        } catch {
+            completion(.failure(error))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: urlRequest) { data, _, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(ApiError.noData))
+                return
+            }
+            
+            do {
+                let response = try JSONDecoder().decode(UserRegisterResponse.self, from: data)
+                completion(.success(response))
+            } catch {
+                if let apiError = try? JSONDecoder().decode(ApiErrorResponse.self, from: data) {
+                    let customError = NSError(domain: "", code: 400, userInfo: [
+                        NSLocalizedDescriptionKey: apiError.error.message
+                    ])
+                    completion(.failure(customError))
+                } else {
+                    completion(.failure(error))
+                }
+            }
+        }.resume()
+    }
+    
+    func loginUser(request: UserLoginRequest, completion: @escaping (Result<UserLoginResponse, Error>) -> Void) {
+        guard NetworkChecker.isConnectedToInternet() else {
+            completion(.failure(ApiError.noInternet))
+            return
+        }
+
+        guard let url = URL(string: ApiConstants.baseURL + ApiConstants.Endpoint.loginUser) else {
+            completion(.failure(ApiError.invalidUrl))
             return
         }
 
@@ -51,7 +102,7 @@ class UserApiService {
             }
 
             do {
-                let response = try JSONDecoder().decode(UserRegisterResponse.self, from: data)
+                let response = try JSONDecoder().decode(UserLoginResponse.self, from: data)
                 completion(.success(response))
             } catch {
                 if let apiError = try? JSONDecoder().decode(ApiErrorResponse.self, from: data) {

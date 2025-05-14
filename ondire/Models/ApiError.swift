@@ -7,7 +7,7 @@
 
 enum ApiError: Error {
     case noInternet
-    case invalidURL
+    case invalidUrl
     case noData
     case decodingFailed
     case serverError(String) // opcional si quieres mostrar mensajes personalizados

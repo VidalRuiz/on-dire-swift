@@ -13,5 +13,7 @@ enum ApiConstants {
         static let healthStatus = "/api/health"
         // Puedes agregar más: login, register, etc.
         static let registerUser = "/api/access/users/register"
+        
+        static let loginUser = "/api/access/users/login"
     }
 }

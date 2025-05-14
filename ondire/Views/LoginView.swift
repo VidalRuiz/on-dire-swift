@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import Combine
 
 struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
-    @State private var goToHome = false
+    @StateObject private var viewModel = LoginViewModel()
 
     var body: some View {
         VStack(spacing: 20) {
@@ -31,10 +32,17 @@ struct LoginView: View {
             .frame(maxWidth: .infinity, alignment: .trailing)
 
             PrimaryButton(title: AppStrings.loginAction) {
-                goToHome = true
+                viewModel.login(email: email, password: password)
             }
-            .navigationDestination(isPresented: $goToHome) {
+            .navigationDestination(isPresented: $viewModel.loginSuccess) {
                 HomeView()
+            }
+            
+            if let error = viewModel.errorMessage {
+                Text(error)
+                    .foregroundColor(.red)
+                    .font(.caption)
+                    .multilineTextAlignment(.center)
             }
 
             Divider().overlay(Text(AppStrings.loginOr).foregroundColor(AppColors.secondaryText))

@@ -51,6 +51,16 @@ enum AppStrings {
     static let errorInvalidEmail = NSLocalizedString("register.error.invalidEmail", comment: "")
     static let errorWeakPassword = NSLocalizedString("register.error.weakPassword", comment: "")
     static let errorTermsNotAccepted = NSLocalizedString("register.error.termsNotAccepted", comment: "")
+    static let errorDuplicateEmail = NSLocalizedString("register.error.duplicateEmail", comment: "")
+    static let errorDuplicateProvider = NSLocalizedString("register.error.duplicateProvider", comment: "")
+    static let errorMissingPassword = NSLocalizedString("register.error.missingPassword", comment: "")
+    static let registerErrorGeneric = NSLocalizedString("register.error.generic", comment: "")
+
+    // Login Validation Errors
+    static let loginErrorUserNotFound = NSLocalizedString("login.error.user_not_found", comment: "")
+    static let loginErrorInvalidPassword = NSLocalizedString("login.error.invalid_password", comment: "")
+    static let loginErrorUserInactive = NSLocalizedString("login.error.user_inactive", comment: "")
+    static let loginErrorGeneric = NSLocalizedString("login.error.generic", comment: "")
     
     static let appStatus = NSLocalizedString("app_status", comment: "")
     static let offlineStatus = NSLocalizedString("offline_status", comment: "")

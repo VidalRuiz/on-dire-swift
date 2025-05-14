@@ -54,7 +54,21 @@ class RegisterViewModel: ObservableObject {
                     self?.successMessage = response.message
                     self?.accountCreated = true
                 case .failure(let error):
-                    self?.errorMessage = error.localizedDescription
+                    if let nsError = error as NSError? {
+                        let message = nsError.localizedDescription
+                        switch message {
+                        case "user_exists":
+                            self?.errorMessage = AppStrings.errorDuplicateEmail
+                        case "identity_exists":
+                            self?.errorMessage = AppStrings.errorDuplicateProvider
+                        case "missing_password":
+                            self?.errorMessage = AppStrings.errorMissingPassword
+                        default:
+                            self?.errorMessage = AppStrings.registerErrorGeneric
+                        }
+                    } else {
+                        self?.errorMessage = AppStrings.registerErrorGeneric
+                    }
                 }
             }
         }

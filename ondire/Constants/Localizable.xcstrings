@@ -438,6 +438,34 @@
         }
       }
     },
+    "register.error.duplicateEmail" : {
+      "comment" : "Error cuando el correo ya está registrado",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "This email is already registered." }},
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Este correo ya está registrado." }}
+      }
+    },
+    "register.error.duplicateProvider" : {
+      "comment" : "Error cuando ya hay una cuenta con este proveedor externo",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "This identity is already linked." }},
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Esta identidad ya está vinculada." }}
+      }
+    },
+    "register.error.missingPassword" : {
+      "comment" : "Error cuando falta la contraseña al usar registro local",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Password is required for local registration." }},
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "La contraseña es obligatoria para el registro local." }}
+      }
+    },
+    "register.error.generic" : {
+      "comment" : "Mensaje de error genérico en registro",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Registration failed. Please try again." }},
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "No se pudo crear la cuenta. Intenta nuevamente." }}
+      }
+    },
     "register.loading.creatingAccount" : {
       "comment" : "Texto que indica que la cuenta se está creando",
       "extractionState" : "stale",
@@ -667,7 +695,39 @@
           }
         }
       }
+    },
+    
+    "login.error.user_not_found" : {
+      "comment" : "Error cuando no se encuentra el usuario",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "User not found." }},
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Usuario no encontrado." }}
+      }
+    },
+    "login.error.invalid_password" : {
+      "comment" : "Error cuando la contraseña es incorrecta",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Incorrect password." }},
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Contraseña incorrecta." }}
+      }
+    },
+    "login.error.user_inactive" : {
+      "comment" : "Error cuando el usuario está desactivado",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "This account is inactive." }},
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Esta cuenta está inactiva." }}
+      }
+    },
+    "login.error.generic" : {
+      "comment" : "Mensaje de error genérico en login",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Login failed. Please try again." }},
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "No se pudo iniciar sesión. Intenta nuevamente." }}
+      }
     }
+    
+    
+    
   },
   "version" : "1.0"
 }
